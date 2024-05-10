@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import useWindowSize from "react-use/lib/useWindowSize";
+import Confetti from "react-confetti";
 
 const TicTacToeGame = () => {
+  const { width, height } = useWindowSize();
   const winnerArray = [
     [0, 1, 2],
     [3, 4, 5],
@@ -17,7 +20,7 @@ const TicTacToeGame = () => {
       let [x, y, z] = winnerArray[i];
 
       if (inputs[x] && inputs[x] === inputs[y] && inputs[y] === inputs[z]) {
-        return true;
+        return inputs[x];
       }
     }
     return null;
@@ -25,22 +28,36 @@ const TicTacToeGame = () => {
 
   const [inputs, setInputs] = useState(Array(9).fill(""));
   const [player, setPlayer] = useState(true);
-  const winner = calculateWinner();
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [winner, setWinner] = useState(null);
+
+  useEffect(() => {
+    const winner = calculateWinner();
+    if (winner) {
+      setWinner(winner);
+      setShowConfetti(true);
+      const timeoutId = setTimeout(() => {
+        setShowConfetti(false);
+      }, 5000);
+      return () => {
+        clearTimeout(timeoutId);
+      };
+    }
+  }, [inputs]);
 
   let status = "";
   if (winner) {
-    status = "Winner is " + (player ? "0" : "X");
+    status = "Winner is " + winner;
   } else {
-    status = "Next player is" + (player ? "X" : "0");
+    status = "Next player is " + (player ? "X" : "0");
   }
 
-  const handelInput = (e) => {
-    console.log(e.target.dataset.key);
+  const handleInput = (e) => {
+    const index = parseInt(e.target.dataset.index);
+    if (inputs[index] !== "") return;
 
-    if (inputs[e.target.dataset.index] !== "") return;
-
-    let copiedArray = inputs.map((input, index) => {
-      if (index == e.target.dataset.index) {
+    const copiedArray = inputs.map((input, i) => {
+      if (i === index) {
         return player ? "X" : "0";
       }
       return input;
@@ -51,9 +68,10 @@ const TicTacToeGame = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center h-screen bg-blue-400">
+      {showConfetti && <Confetti width={width} height={height} />}
       <h1 className="text-3xl font-bold mb-4">Tic Tac Toe Game</h1>
-      <div onClick={handelInput} className="grid grid-cols-3 gap-2">
+      <div onClick={handleInput} className="grid grid-cols-3 gap-2">
         {inputs.map((input, index) => (
           <div
             key={index}
@@ -65,6 +83,9 @@ const TicTacToeGame = () => {
         ))}
       </div>
       <p>{status}</p>
+      {winner && (
+        <button onClick={() => setShowConfetti(true)} className="mt-4"></button>
+      )}
     </div>
   );
 };
