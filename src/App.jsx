@@ -8,11 +8,16 @@ const App = () => {
   return (
     <>
       <Navbar />
+      {/*
       <Tic_Tac_Toe_Game />
-      {/**/}
-      {/**/}
+    */}
+      {/*
+    
       <Stopwatch />
-      {/*<Timer />*/}
+    */}
+      {/*
+    */}
+    <Timer />
     </>
   );
 };
