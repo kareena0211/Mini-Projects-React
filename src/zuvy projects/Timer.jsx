@@ -25,6 +25,7 @@ const Timer = () => {
   };
 
   const handleReset = () => {
+    clearInterval(intervalId.current);
     setHH(0);
     setMM(0);
     setSS(0);
@@ -64,19 +65,19 @@ const Timer = () => {
           <Button
             name="Start"
             backgroundColor="#84cc16"
-            hoverBG = "#facc15" 
+            hoverBG="#facc15"
             handlerFunction={handleStart}
           />{" "}
           <Button
             name="Stop"
             backgroundColor="#ef4444"
-            hoverBG = "#facc15" 
+            hoverBG="#facc15"
             handlerFunction={handleStop}
           />
           <Button
             name="Reset"
             backgroundColor="#0891b2"
-            hoverBG = "#facc15" 
+            hoverBG="#facc15"
             handlerFunction={handleReset}
           />
         </div>
