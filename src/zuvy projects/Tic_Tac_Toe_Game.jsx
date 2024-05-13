@@ -4,6 +4,8 @@ import Confetti from "react-confetti";
 
 const TicTacToeGame = () => {
   const { width, height } = useWindowSize();
+  const container = 1250;
+  const confettiWidth = Math.min(width, container);
   const winnerArray = [
     [0, 1, 2],
     [3, 4, 5],
@@ -38,7 +40,7 @@ const TicTacToeGame = () => {
       setShowConfetti(true);
       const timeoutId = setTimeout(() => {
         setShowConfetti(false);
-      }, 5000);
+      }, 15000);
       return () => {
         clearTimeout(timeoutId);
       };
@@ -53,6 +55,7 @@ const TicTacToeGame = () => {
   }
 
   const handleInput = (e) => {
+    if (winner) return;
     const index = parseInt(e.target.dataset.index);
     if (inputs[index] !== "") return;
 
@@ -69,7 +72,7 @@ const TicTacToeGame = () => {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-blue-400">
-      {showConfetti && <Confetti width={width} height={height} />}
+      {showConfetti && <Confetti width={confettiWidth} height={height} />}
       <h1 className="text-3xl font-bold mb-4">Tic Tac Toe Game</h1>
       <div onClick={handleInput} className="grid grid-cols-3 gap-2">
         {inputs.map((input, index) => (

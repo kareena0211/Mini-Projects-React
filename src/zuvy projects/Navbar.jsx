@@ -1,14 +1,20 @@
 import React from "react";
-import Tic_Tac_Toe_Game from "./Tic_Tac_Toe_Game";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <>
       <nav className="bg-gray-800 p-4">
         <ul className="flex justify-around text-white">
-          <li className="cursor-pointer">Tic Tac Toe Game</li>
-          <li className="cursor-pointer">StopWatch</li>
-          <li className="cursor-pointer">Timer</li>
+          <li className="cursor-pointer">
+            <Link to="/">Tic Tac Toe Game</Link>
+          </li>
+          <li className="cursor-pointer">
+            <Link to="/stopwatch">StopWatch</Link>
+          </li>
+          <li className="cursor-pointer">
+            <Link to="/timer">Timer</Link>
+          </li>
         </ul>
       </nav>
     </>
