@@ -31,49 +31,30 @@ const Stopwatch = () => {
   };
 
   return (
-    <div className="flex justify-center items-center bg-black h-[89.7vh]">
-      <div className=" flex justify-center items-center flex-col ">
+    <div className="flex justify-center items-center bg-[#ecfdf5] h-[88vh]">
+      <div className=" flex justify-center items-center flex-col bg-[#059669] p-6 rounded-2xl">
         <h1 className="text-3xl mb-4">Stopwatch</h1>
         <div className="flex justify-center items-center bg-gray-200 h-16 w-48 mb-4">
           <div className="text-4xl">{formateTime()}</div>
         </div>
         <div className="flex gap-8 m-6">
-          {/* <button
-            onClick={handleStart}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mr-2 rounded"
-          >
-            Start
-          </button>
-
-          <button
-            onClick={handelStop}
-            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mr-2 rounded"
-          >
-            Stop
-          </button>
-          <button
-            onClick={handelReset}
-            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-          >
-            Reset
-  </button> */}
           <Button
             name="start"
             handlerFunction={handleStart}
             backgroundColor="#22c55e"
-            hoverColor=" 2px solid #22c55e"
+            hoverBG="#0369a1"
           />
           <Button
             name="stop"
             handlerFunction={handelStop}
             backgroundColor="#ef4444"
-            hoverColor="2px solid #ef4444"
+            hoverBG="#0369a1"
           />
           <Button
             name="Reset"
             handlerFunction={handelReset}
             backgroundColor="#3b82f6"
-            hoverColor="2px solid #3b82f6"
+            hoverBG="#0369a1"
           />
         </div>
       </div>

@@ -16,8 +16,8 @@ const Button = (props) => {
       <button
         onClick={props.handlerFunction}
         style={{
-          backgroundColor: isHovered ? "transparent" : props.backgroundColor,
-          border: isHovered ? props.hoverColor : "none"
+          backgroundColor: isHovered ? props.hoverBG : props.backgroundColor,
+          border: isHovered ? props.hoverColor : "none",
         }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}

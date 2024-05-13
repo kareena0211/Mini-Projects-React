@@ -40,7 +40,7 @@ const TicTacToeGame = () => {
       setShowConfetti(true);
       const timeoutId = setTimeout(() => {
         setShowConfetti(false);
-      }, 15000);
+      }, 5000);
       return () => {
         clearTimeout(timeoutId);
       };
@@ -71,9 +71,11 @@ const TicTacToeGame = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-blue-400">
+    <div className="flex flex-col items-center justify-center h-[88.4vh] bg-[#34d399]">
       {showConfetti && <Confetti width={confettiWidth} height={height} />}
-      <h1 className="text-3xl font-bold mb-4">Tic Tac Toe Game</h1>
+      <h1 className="text-3xl font-bold mb-4 text-[#022c22]">
+        Tic Tac Toe Game
+      </h1>
       <div onClick={handleInput} className="grid grid-cols-3 gap-2">
         {inputs.map((input, index) => (
           <div
@@ -85,7 +87,7 @@ const TicTacToeGame = () => {
           </div>
         ))}
       </div>
-      <p>{status}</p>
+      <p className="text-2xl mt-3">{status}</p>
       {winner && (
         <button onClick={() => setShowConfetti(true)} className="mt-4"></button>
       )}

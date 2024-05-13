@@ -31,31 +31,31 @@ const Timer = () => {
   };
 
   return (
-    <div className=" bg-red-400 flex justify-center items-center flex-col h-[89.7vh]">
+    <div className=" bg-[#ecfdf5] flex justify-center items-center flex-col h-[88.4vh]">
       <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">
         Timer
       </h1>
 
-      <div>
-        <div className="flex items-center  border border-gray-200 p-6 justify-center gap-2 rounded-lg shadow-md">
+      <div className="bg-[#064e3b] flex items-center justify-center flex-col p-3">
+        <div className="flex items-center p-6 w-[80%] justify-center gap-2 rounded-lg bg-white mt-5 ">
           <input
             type="number"
             placeholder="hh"
-            className="w-20 h-14 px-4 py-2 bg-gray-100 border-r-2 border-gray-200 focus:outline-none rounded-l-lg text-center"
+            className="w-20 h-14 px-4 py-2  border-r-4 border-[#047857]  focus:outline-none rounded-l-lg text-center"
             value={hh}
             onChange={(e) => setHH(Number(e.target.value))}
           />
           <input
             type="number"
             placeholder="mm"
-            className="w-20 h-14 px-4 py-2 bg-gray-100 border-r-2 border-gray-200 focus:outline-none text-center"
+            className="w-20 h-14 px-4 py-2  border-r-4 border-[#047857] focus:outline-none text-center"
             value={mm}
             onChange={(e) => setMM(Number(e.target.value))}
           />
           <input
             type="number"
             placeholder="ss"
-            className="w-20 h-14 px-4 py-2 bg-gray-100 focus:outline-none rounded-r-lg text-center"
+            className="w-20 h-14 px-4 py-2  focus:outline-none rounded-r-lg text-center"
             value={ss}
             onChange={(e) => setSS(Number(e.target.value))}
           />
@@ -63,20 +63,20 @@ const Timer = () => {
         <div className=" m-5 p-5  flex gap-5">
           <Button
             name="Start"
-            backgroundColor="#0891b2"
-            hoverColor=" 2px solid #000"
+            backgroundColor="#84cc16"
+            hoverBG = "#facc15" 
             handlerFunction={handleStart}
           />{" "}
           <Button
             name="Stop"
-            backgroundColor="#0891b2"
-            hoverColor=" 2px solid #000"
+            backgroundColor="#ef4444"
+            hoverBG = "#facc15" 
             handlerFunction={handleStop}
           />
           <Button
             name="Reset"
             backgroundColor="#0891b2"
-            hoverColor=" 2px solid #000"
+            hoverBG = "#facc15" 
             handlerFunction={handleReset}
           />
         </div>
